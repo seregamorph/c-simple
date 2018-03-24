@@ -81,20 +81,21 @@ public class SimpleTest {
     public void testIntArrayBig5() {
         // maximum int
         // 30m
-        assertEquals(2147483647, Simple.arraySimpleInt(105_097_566, true));
+        assertEquals(2_147_483_647, Simple.arraySimpleInt(105_097_566, true));
     }
 
     @Test
     public void testLongArrayBig6() {
         // more than maximum int - long
         // 1h30m
-        assertEquals(2147483659L, Simple.arraySimpleLong(105_097_567, true));
+        assertEquals(2_147_483_659L, Simple.arraySimpleLong(105_097_567, true));
     }
 
     private static void checkAll(int n, int expected) {
         assertEquals(expected, Simple.basicSimpleInt(n, true));
         assertEquals(expected, Simple.basicSimpleLong(n, true));
         assertEquals(expected, Simple.arraySimpleInt(n, true));
+        assertEquals(expected, Simple.arraySimpleIntSqr(n, true));
         assertEquals(expected, Simple.arraySimpleLong(n, true));
     }
 }

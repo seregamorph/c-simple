@@ -139,6 +139,51 @@ public class Simple {
         }
     }
 
+    static int arraySimpleIntSqr(int n, boolean trace) {
+        if (n == 1) {
+            return 1;
+        } else if (n == 2) {
+            return 2;
+        }
+
+        int[] arr = new int[n - 3];
+        // i - индекс в массиве
+        int i = 0;
+        // предел проверки - квадратный корень из текущего m
+        int maxd = 1;
+        int maxdSqr = maxd * maxd;
+        // m - число, которое проверяем на простоту
+        int m = 3;
+        cm:
+        for (; ; m += 2) {
+            if (m < 0) {
+                // здесь можно в принципе ограничиться известным максимальным N
+                throw new IllegalStateException("int overload, last i=" + i + " and m=" + arr[i - 1]);
+            }
+
+            if (m > maxdSqr) {
+                maxd++;
+                maxdSqr = maxd * maxd;
+            }
+
+            // d - делитель
+            int d;
+            for (int j = 0; j < i && (d = arr[j]) <= maxd; j++) {
+                if (m % d == 0) {
+                    continue cm;
+                }
+            }
+            // m - простое
+            if (++i >= n - 2) {
+                return m;
+            }
+            arr[i - 1] = m;
+            if (trace && i % 1_000_000 == 0) {
+                System.out.println(i + " " + m);
+            }
+        }
+    }
+
     static long arraySimpleLong(int n, boolean trace) {
         if (n == 1) {
             return 1;
