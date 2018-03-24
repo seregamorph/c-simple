@@ -64,6 +64,7 @@ public class Simple {
         }
     }
 
+    @Deprecated // не представляет большого интереса
     static long basicSimpleLong(int n, boolean trace) {
         if (n == 1) {
             return 1;
@@ -113,12 +114,14 @@ public class Simple {
         cm:
         for (; ; m += 2) {
             if (m < 0) {
+                // здесь можно в принципе ограничиться известным максимальным N
                 throw new IllegalStateException("int overload, last i=" + i + " and m=" + arr[i - 1]);
             }
 
             double sqrt = Math.sqrt(m);
             int maxd = (int) Math.round(sqrt);
 
+            // d - делитель
             int d;
             for (int j = 0; j < i && (d = arr[j]) <= maxd; j++) {
                 if (m % d == 0) {
@@ -151,12 +154,13 @@ public class Simple {
         cm:
         for (; ; m += 2) {
             if (m < 0) {
-                throw new IllegalStateException("int overload, last i=" + i);
+                throw new IllegalStateException("long overload, last i=" + i);
             }
 
             double sqrt = Math.sqrt(m);
             long maxd = Math.round(sqrt);
 
+            // d - делитель
             long d;
             for (int j = 0; j < i && (d = arr[j]) <= maxd; j++) {
                 if (m % d == 0) {

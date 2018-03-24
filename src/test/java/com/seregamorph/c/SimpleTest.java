@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class SimpleTest {
 
     @Test
-    public void testSmall() {
+    public void testSmallAllImpls() {
         checkAll(1, 1);
         checkAll(2, 2);
         checkAll(3, 3);
@@ -27,6 +27,8 @@ public class SimpleTest {
         checkAll(16, 47);
         checkAll(17, 53);
         checkAll(18, 59);
+        checkAll(19, 61);
+        checkAll(20, 67);
 
         checkAll(500, 3559);
         checkAll(501, 3571);
@@ -34,7 +36,7 @@ public class SimpleTest {
 
     @Test
     public void testBasicBig1() {
-        // 18s
+        // 16s
         assertEquals(27_644_437, Simple.basicSimpleInt(1_720_726, true));
     }
 
@@ -93,5 +95,6 @@ public class SimpleTest {
         assertEquals(expected, Simple.basicSimpleInt(n, true));
         assertEquals(expected, Simple.basicSimpleLong(n, true));
         assertEquals(expected, Simple.arraySimpleInt(n, true));
+        assertEquals(expected, Simple.arraySimpleLong(n, true));
     }
 }
