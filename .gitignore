@@ -4,6 +4,7 @@
 *.iws
 *.log
 *.log.*
+.gradle
 .classpath
 .project
 .settings
